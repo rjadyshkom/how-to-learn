@@ -13,6 +13,7 @@
   display: flex;
   align-items: center;
   background-color: #f2f2f2;
+  z-index: 1;
 }
 
 .logo {
@@ -23,7 +24,6 @@
   position: absolute;
   top: 30px;
   left: 64px;
-  z-index: 2;
   height: 32px;
 }
 
@@ -33,11 +33,10 @@
 
 .header__title {
   width: 730px;
-  margin-left: 64px;
+  margin: 0 0 0 64px;
   line-height: 96px;
   font-size: 102px;
-  font-weight: 600;
-  z-index: 2;
+  font-weight: bold;
 }
 
 .header__subtitle {
@@ -45,10 +44,10 @@
   bottom: 30px;
   left: 64px;
   width: 388px;
-  z-index: 2;
   line-height: 25px;
   font-size: 18px;
   font-weight: normal;
+  margin: 0;
 }
 
 .header__link {
@@ -56,8 +55,17 @@
   color: #2f80ed;
 }
 
+/* Prettier также добавляет 0 перед точкой. Я писал .3s =) */
+
 .header__link::after {
-  content: " →";
+  content: "→";
+  display: inline-block;
+  transform: translate3d(5px, 0px, 0px);
+  transition: all 0.3s ease-in-out;
+}
+
+.header__link:hover::after {
+  transform: translate3d(15px, 0px, 0px);
 }
 
 .header__main-illustration {
@@ -66,7 +74,7 @@
   right: 0;
   width: 765px;
   height: 608px;
-  z-index: 1;
+  z-index: -1;
 }
 
 .header__square-pic {
@@ -76,6 +84,7 @@
   width: 568px;
   height: 568px;
   background-color: #2f80ed;
+  z-index: -2;
 }
 
 .description {
@@ -113,7 +122,7 @@
   padding: 0;
 }
 
-.two-columns__paragraph:nth-child(2) {
+.two-columns__paragraph:nth-child(2n) {
   padding: 30px 0;
 }
 
@@ -133,7 +142,7 @@
 .section-title {
   line-height: 1.15;
   font-size: 60px;
-  font-weight: 600;
+  font-weight: bold;
   width: 60%;
   margin: 0;
   padding: 0;
@@ -142,15 +151,7 @@
 }
 
 .section-title_theme_dark {
-  line-height: 1.15;
-  font-size: 60px;
-  font-weight: 600;
-  width: 60%;
-  margin: 0;
-  padding: 0;
-  text-align: center;
   color: #fff;
-  z-index: 1;
 }
 
 .section-subtitle {
@@ -158,22 +159,14 @@
   font-size: 24px;
   font-weight: normal;
   width: 60%;
-  margin: 20px 0;
+  margin: 20px 0 0;
   padding: 0;
   text-align: center;
   color: #000;
 }
 
 .section-subtitle_theme_dark {
-  line-height: 34px;
-  font-size: 24px;
-  font-weight: normal;
-  width: 60%;
-  margin: 20px 0;
-  padding: 0;
-  text-align: center;
   color: #fff;
-  z-index: 1;
 }
 
 .table {
@@ -182,16 +175,14 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  list-style: none;
 }
 
+/* Не пригодился, после правок z-index
 .table_theme_dark {
-  width: 1100px;
-  margin: 0;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  z-index: 1;
+  
 }
+*/
 
 .table__cell {
   width: 250px;
@@ -206,16 +197,12 @@
 .table__heading {
   line-height: 1.15;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: bold;
   margin: 0;
   color: #000;
 }
 
 .table__heading_theme_dark {
-  line-height: 1.15;
-  font-size: 24px;
-  font-weight: 600;
-  margin: 0;
   color: #fff;
 }
 
@@ -228,18 +215,14 @@
 }
 
 .table__text_theme_dark {
-  line-height: 1.2;
-  font-size: 18px;
-  font-weight: normal;
-  margin: 20px 0 0 0;
   color: #fff;
 }
 
 .feynman {
-  height: 790px;
+  min-height: 790px;
   padding: 100px 0 0 0;
   position: relative;
-  background: url(/images/feynman.png) no-repeat bottom left #f2f2f2;
+  background: url(../images/feynman.png) no-repeat bottom left #f2f2f2;
   background-size: 867px 637px;
   display: flex;
   flex-direction: column;
@@ -249,7 +232,7 @@
 .feynman__title {
   line-height: 1.15;
   font-size: 120px;
-  font-weight: 600;
+  font-weight: bold;
   width: 648px;
   text-align: center;
   margin: 0;
@@ -276,7 +259,18 @@
 }
 
 .feynman__link::after {
-  content: " →";
+  content: "→";
+  display: inline-block;
+  transform: translate3d(15px, 0px, 0px);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.feynman__link:hover::after {
+  transform: translate3d(30px, 0px, 0px);
 }
 
 .kaufman {
@@ -287,14 +281,18 @@
   justify-content: center;
   background-color: #1f1f1f;
   overflow: hidden;
+  z-index: 1;
 }
 
 .kaufman__triangle {
+  background-image: url(../images/kaufman-triangle.svg);
+  background-size: contain;
   position: absolute;
   top: 0;
   right: -210px;
   width: 877px;
   height: 877px;
+  z-index: -1;
 }
 
 .footer {
@@ -312,9 +310,12 @@
   justify-content: space-between;
 }
 
-.footer__column_content_copyright {
+.footer__column {
   display: flex;
   flex-direction: column;
+}
+
+.footer__column_content_copyright {
   justify-content: space-between;
   flex-basis: 711px;
 }
@@ -327,16 +328,17 @@
   margin: 18px 0;
 }
 
-/* Не понял, для чего сейчас нужна эта секция в разметке
+/*Всё ещё не нужен 
 
 .footer__column_content_info {
+  
 }
 */
 
 .footer__column-heading {
   line-height: 30px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: bold;
   color: #fff;
   margin: 0 0 20px 0;
 }
@@ -344,12 +346,15 @@
 .footer__column-links {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
+/* И этот
+
 .footer__column_content_social {
-  display: flex;
-  flex-direction: column;
+ 
 }
+*/
 
 .footer__social-icon {
   width: 16px;
@@ -363,6 +368,15 @@
   font-weight: normal;
   color: #fff;
   text-decoration: none;
+}
+
+.footer__column-link:hover {
+  color: #2f80ed;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 /* Также не понял, зачем нужен этот отступ, но в макете он есть */
