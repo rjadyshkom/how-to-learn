@@ -1,0 +1,20 @@
+.footer__column-link {
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: normal;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer__column-link:hover {
+    color: #2f80ed;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer__column-link:last-child {
+    margin-bottom: 16px;
+}

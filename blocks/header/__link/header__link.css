@@ -1,0 +1,15 @@
+.header__link {
+    text-decoration: none;
+    color: #2f80ed;
+}
+
+.header__link::after {
+    content: "→";
+    display: inline-block;
+    transform: translate3d(5px, 0px, 0px);
+    transition: all .3s ease-in-out;
+}
+
+.header__link:hover::after {
+    transform: translate3d(15px, 0px, 0px);
+}
