@@ -14,7 +14,3 @@
     -ms-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-
-.footer__column-link:last-child {
-    margin-bottom: 16px;
-}
